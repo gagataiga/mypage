@@ -8,16 +8,32 @@ const images = [
 ];
 
 let next = document.getElementById("nextbtn");
+let container = document.getElementById("certification-slider");
+let img = document.getElementById("slideshow");
+
+console.log(container.length);
 
 let count = 0;
 
+let swapImage = () => {
+  slide.className = "fadeout";
+};
+
 next.addEventListener("click", () => {
-  if (count >= images.length) {
+  if (count >= images.length - 1) {
     count = 0;
-    document.getElementById("slideshow").src = images[count];
   } else {
     count++;
-    document.getElementById("slideshow").src = images[count];
-    console.log(count);
   }
+  console.log(count);
+
+  $("#slideshow").fadeOut(2000, function () {
+    img.src = images[count];
+    $("#slideshow").fadeIn(2000);
+  });
+  // $("#slideshow").fadeOut(3, function () {
+  //   img.src = images[count];
+  //   // console.log(img.src);
+  //   // $("#slideshow").fadeIn(3);
+  // });
 });
